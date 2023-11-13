@@ -15,4 +15,9 @@ app.get("/results", async (request, response) => {
   response.json(results);
 });
 
+app.get("/results/:id", async (request, response) => {
+  const result = await Deal.findById(request.params.id);
+  response.json(result);
+});
+
 app.listen(PORT, () => console.log(`App is running on port ${PORT}`));
