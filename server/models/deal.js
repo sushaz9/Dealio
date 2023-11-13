@@ -5,7 +5,7 @@ const dealSchema = new Schema({
   businessName: String,
   offer: String,
   discountDay: String,
-  voucher: String,
+  voucher: Boolean,
   location: String,
   category: String,
   businessImage: String,
