@@ -7,13 +7,13 @@ import Home from "./pages/Home";
 // import Favourites from "./pages/Favourites";
 // import Result from "./pages/Result";
 // import Footer from "./components/Footer";
-// import Header from "./components/Header";
+import Header from "./components/Header";
 // import Form from "./components/Form";
 
 function App() {
   return (
     <BrowserRouter>
-      {/* <Header /> */}
+      <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         {/* <Route path="/about" element={<About />} />
