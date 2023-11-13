@@ -1,19 +1,60 @@
-import Featured from "../components/Featured";
-import { Link } from "react-router-dom";
+// import Featured from "../components/Featured";
+// import { Link } from "react-router-dom";
+import axios from "axios";
+import { useState, useEffect } from "react";
 
 function Home() {
+  const [results, setResults] = useState([]);
+  const [location, setLocation] = useState("");
+
+  useEffect(() => {
+    getResults();
+  }, []);
+
+  async function getResults() {
+    const API = `http://localhost:8080/results`;
+    const res = await axios.get(API);
+    setResults(res.data);
+  }
+
+  function handleFilter(event) {
+    event.preventDefault();
+    setLocation(event.target.value);
+  }
+
+  const filteredResults = results.filter(function (result) {
+    return result.location === location || location === "";
+  });
+
   return (
     <div>
-      <img src="" />
-
+      {/* <img src="" /> */}
       <p>Dealio</p>
-      <label></label>
-      <select>
-        <option> Liverpool </option>
-      </select>
-      <div id="results"></div>
+      <form onChange={handleFilter}>
+        <label>Filter by location:</label>
+        <select>
+          <option value=""> All </option>
+          <option value="Manchester"> Manchester </option>
+          <option value="Liverpool"> Liverpool </option>
+        </select>
+      </form>
+      <div id="results">
+        {filteredResults.map((result) => {
+          return (
+            <div key={result._id}>
+              <h2>{result.businessName}</h2>
+              <img src={result.logoImage} />
+              <h3>{result.location}</h3>
+              <h3>{result.discountDay}</h3>
+              <h3>{result.category}</h3>
+              <h3>{result.offercod}</h3>
+              <img src={result.businessImage} />
+            </div>
+          );
+        })}
+      </div>
 
-      <Featured />
+      {/* <Featured /> */}
     </div>
   );
 }

@@ -6,8 +6,13 @@ app.use(cors());
 const PORT = 8080;
 app.use(express.json());
 
-app.get("/", (_, response) =>
-  response.json("You are looking at my root route")
-);
+const mongoose = require("mongoose");
+const Deal = require("./models/deal");
+mongoose.connect(process.env.DATABASE_URL);
+
+app.get("/results", async (request, response) => {
+  const results = await Deal.find(request.query);
+  response.json(results);
+});
 
 app.listen(PORT, () => console.log(`App is running on port ${PORT}`));
