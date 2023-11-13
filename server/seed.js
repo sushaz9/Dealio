@@ -20,7 +20,7 @@ async function seed() {
     {
       businessName: "Almost Famous",
       offer: "Weekday £10 Burger & Fries 12 pm - 4 pm",
-      discountDay: "Monday to Friday",
+      discountDay: "Weekday",
       voucher: false,
       location: "11-13 Parr Street, Liverpool, L1 4JN",
       category: "Restaurant",
@@ -32,7 +32,7 @@ async function seed() {
     {
       businessName: "Maray",
       offer: "2 dine for £40",
-      discountDay: "4 - 6pm Tuesday - Friday & All Day Sunday",
+      discountDay: "Weekday",
       voucher: false,
       location: "Liverpool",
       category: "Middle Eastern Inspired Street Food",
