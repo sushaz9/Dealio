@@ -6,13 +6,11 @@ import About from "./pages/About";
 import Home from "./pages/Home";
 import Favourites from "./pages/Favourites";
 import Result from "./pages/Result";
-import Featured from "./components/Featured";
 import Footer from "./components/Footer";
-/*import Header from "./components/Header";*/
+import Header from "./components/Header";
 import Form from "./components/Form";
 
 function App() {
-  const [count, setCount] = useState(0);
   return (
     <>
       <Header />
@@ -20,7 +18,10 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/result/ :id" element={<Result />} />
+        <Route path="/favourites" element={<Favourites />} />
+        <Route path="/form" element={<Form />} />
       </Routes>
+      <Footer />
     </>
   );
 }
