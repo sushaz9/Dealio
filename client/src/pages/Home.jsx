@@ -78,7 +78,7 @@ function Home() {
         <select>
           <option value=""> All </option>
           <option value="Weekday"> All Weekdays </option>
-          <option value="Weekend"> All Weekends </option>
+          <option value="Weekend"> All Weekend Days </option>
           <option value="Monday"> Monday </option>
           <option value="Tuesday"> Tuesday </option>
           <option value="Wednesday"> Wednesday </option>
@@ -123,7 +123,5 @@ function Home() {
     </div>
   );
 }
-
-// filter, map through results
 
 export default Home;
