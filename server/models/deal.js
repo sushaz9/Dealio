@@ -8,6 +8,7 @@ const dealSchema = new Schema({
   voucher: Boolean,
   location: String,
   category: String,
+  address: String,
   businessImage: String,
   logoImage: String,
 });

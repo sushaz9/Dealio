@@ -66,8 +66,7 @@ function Home() {
         <select>
           <option value=""> All </option>
           <option value="Fast food"> Fast Food </option>
-          <option value="BBQ"> BBQ </option>
-          <option value="Fusion"> Fusion </option>
+          <option value="Japanese"> Japanese </option>
           <option value="Street food"> Street Food </option>
           <option value="Fine dining"> Fine Dining </option>
         </select>
