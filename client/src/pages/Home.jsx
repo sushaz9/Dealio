@@ -1,5 +1,5 @@
 // import Featured from "../components/Featured";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import Slider from "react-slick";
@@ -11,6 +11,8 @@ function Home() {
   const [results, setResults] = useState([]);
   const [location, setLocation] = useState("");
   const [deals, setDeals] = useState([]);
+  const [discountDay, setDay] = useState("");
+  const [category, setCategory] = useState("");
 
   useEffect(() => {
     getResults();
@@ -22,37 +24,83 @@ function Home() {
     setResults(res.data);
   }
 
-  function handleFilter(event) {
+  function handleLocationFilter(event) {
     event.preventDefault();
     setLocation(event.target.value);
   }
 
+  function handleCategoryFilter(event) {
+    event.preventDefault();
+    setCategory(event.target.value);
+  }
+
+  function handleDayFilter(event) {
+    event.preventDefault();
+    setDay(event.target.value);
+  }
+
   const filteredResults = results.filter(function (result) {
-    return result.location === location || location === "";
+    return (
+      (result.location === location || location === "") &&
+      (result.category === category || category === "") &&
+      (result.discountDay === discountDay || discountDay === "")
+    );
   });
 
   return (
     <div>
       {/* <img src="" /> */}
       <p>Dealio</p>
-      <form onChange={handleFilter}>
+      <form onChange={handleLocationFilter}>
         <label>Filter by location:</label>
         <select>
           <option value=""> All </option>
+          <option value="UK wide"> UK Wide </option>
           <option value="Manchester"> Manchester </option>
           <option value="Liverpool"> Liverpool </option>
         </select>
       </form>
+
+      <form onChange={handleCategoryFilter}>
+        <label>Filter by category:</label>
+        <select>
+          <option value=""> All </option>
+          <option value="Fast food"> Fast Food </option>
+          <option value="BBQ"> BBQ </option>
+          <option value="Fusion"> Fusion </option>
+          <option value="Street food"> Street Food </option>
+          <option value="Fine dining"> Fine Dining </option>
+        </select>
+      </form>
+
+      <form onChange={handleDayFilter}>
+        <label>Filter by day of discount:</label>
+        <select>
+          <option value=""> All </option>
+          <option value="Weekday"> All Weekdays </option>
+          <option value="Weekend"> All Weekends </option>
+          <option value="Monday"> Monday </option>
+          <option value="Tuesday"> Tuesday </option>
+          <option value="Wednesday"> Wednesday </option>
+          <option value="Thursday"> Thursday </option>
+          <option value="Friday"> Friday </option>
+          <option value="Saturday"> Saturday </option>
+          <option value="Sunday"> Sunday </option>
+        </select>
+      </form>
+
       <div id="results">
         {filteredResults.map((result) => {
           return (
             <div key={result._id}>
-              <h2>{result.businessName}</h2>
+              <Link to={`/results/${result._id}`}>
+                <h2>{result.businessName}</h2>
+              </Link>
               <img src={result.logoImage} alt={result.businessName} />
               <h3>{result.location}</h3>
               <h3>{result.discountDay}</h3>
               <h3>{result.category}</h3>
-              <h3>{result.offercod}</h3>
+              <h3>{result.offer}</h3>
               <img src={result.businessImage} alt={result.businessName} />
             </div>
           );
