@@ -21,14 +21,12 @@ export default function Result({}) {
     }
   }
 
-  console.log("working?");
-
   return (
     <div key={result._id}>
       <h2>{result.businessName}</h2>
       <h3>{result.offer}</h3>
       <img src={result.businessImage} alt="Business" />
-      <h3>{result.location}</h3>
+      <h3>{result.address}</h3>
     </div>
   );
 }
