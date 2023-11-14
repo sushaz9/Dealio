@@ -8,8 +8,6 @@ import Home from "./pages/Home";
 import Result from "./pages/Result";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import { useState } from "react";
-// import Form from "./components/Form";
 
 function App() {
   return (

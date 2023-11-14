@@ -5,10 +5,12 @@ import { useState, useEffect } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Form from "../components/Form";
 
 function Home() {
   const [results, setResults] = useState([]);
   const [location, setLocation] = useState("");
+  const [deals, setDeals] = useState([]);
   const [discountDay, setDay] = useState("");
   const [category, setCategory] = useState("");
 
@@ -116,8 +118,8 @@ function Home() {
             );
           })}
         </Slider>
+        <Form deals={deals} setDeals={setDeals} />;
       </div>
-      {/* <Featured /> */}
     </div>
   );
 }
