@@ -1,5 +1,5 @@
 // import Featured from "../components/Featured";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import Slider from "react-slick";
@@ -45,13 +45,17 @@ function Home() {
         {filteredResults.map((result) => {
           return (
             <div key={result._id}>
-              <h2>{result.businessName}</h2>
+
+              <Link to={`/results/${result._id}`}>
+                <h2>{result.businessName}</h2>
+              </Link>
               <img src={result.logoImage} alt={result.businessName} />
               <h3>{result.location}</h3>
               <h3>{result.discountDay}</h3>
               <h3>{result.category}</h3>
-              <h3>{result.offercod}</h3>
+              <h3>{result.offer}</h3>
               <img src={result.businessImage} alt={result.businessName} />
+
             </div>
           );
         })}
