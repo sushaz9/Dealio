@@ -51,7 +51,8 @@ app.put("/results/:id", async (request, response) => {
     console.log(error);
     response.status(418).json("418 I'm a Teapot");
   }
-  
+});
+
 app.get("/results/:id", async (request, response) => {
   const result = await Deal.findById(request.params.id);
   response.json(result);
