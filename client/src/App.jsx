@@ -6,12 +6,15 @@ import About from "./pages/About";
 import Home from "./pages/Home";
 import Favourites from "./pages/Favourites";
 import Result from "./pages/Result";
+import FormPage from "./pages/FormPage";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import { useAuth0 } from "@auth0/auth0-react";
 import LoginButton from "./components/LoginButton";
 import LogoutButton from "./components/LogoutButton";
 import Profile from "./components/Profile";
+
+const API_KEY = import.meta.env.LOCATION_KEY;
 
 function App() {
   const { user, isAuthenticated, isLoading } = useAuth0();
@@ -54,7 +57,7 @@ function App() {
             <Favourites favourites={favourites} setFavourites={setFavourites} />
           }
         />
-        {/* <Route path="/form" element={<Form />} /> */}
+        <Route path="/formpage" element={<FormPage />} />
       </Routes>
       <Footer />
     </Router>

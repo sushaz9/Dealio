@@ -10,7 +10,6 @@ import Form from "../components/Form";
 function Home({ favourites, setFavourites }) {
   const [results, setResults] = useState([]);
   const [location, setLocation] = useState("");
-  const [deals, setDeals] = useState([]);
   const [discountDay, setDay] = useState("");
   const [category, setCategory] = useState("");
 
@@ -135,7 +134,6 @@ function Home({ favourites, setFavourites }) {
             );
           })}
         </Slider>
-        <Form deals={deals} setDeals={setDeals} />;
       </div>
       {/* Pass favourites to Favourites component. Passes the object with a state property, which contains favourites array. Should be accessible in Favourites.jsx through props. */}
       <button
