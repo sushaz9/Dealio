@@ -17,9 +17,9 @@ const BurgerMenu = () => {
         <div className="bar"></div>
       </div>
       <div className="menu-items">
-        <Link to={`/pages/Home`}>Home</Link>
-        <Link to={`/pages/Favourites`}>Favourites</Link>
-        <Link to={`/pages/About`}>About</Link>
+        <Link to={`/`}>Home</Link>
+        <Link to="favourites">Favourites</Link>
+        <Link to="about">About</Link>
       </div>
     </div>
   );
