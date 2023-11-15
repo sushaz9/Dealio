@@ -40,21 +40,15 @@ export default function Result({}) {
       <h3>{result.offer}</h3>
       <img src={result.businessImage} alt="Business" />
       <h3>{result.address}</h3>
-      <button onClick={handleMap}>View Map</button>
+
+      {result.address && <button onClick={handleMap}>View Map</button>}
+
       {showMap && (
         <img
           src={`https://maps.locationiq.com/v3/staticmap?key=${API_KEY}&center=${location.latitude},${location.longitude}&zoom=20&markers=${location.latitude},${location.longitude}|icon:large-blue-cutout&format=png&markers=icon:large-blue-cutout`}
           alt="Location Map"
         />
-
-        // <img
-        //   src={`https://maps.locationiq.com/v3/staticmap?key=pk.9642179c41ee1da1500b4e7113a438b5&center=${location.latitude},${location.longitude}&zoom=20&markers=${location.latitude},${location.longitude}|icon:large-blue-cutout&format=png&markers=icon:large-blue-cutout`}
-        //   alt="Location Map"
-        // />
       )}
     </div>
   );
 }
-
-//add a map, add addresses
-//${LOCATION_KEY}
