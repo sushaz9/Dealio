@@ -5,7 +5,7 @@ export default function Footer() {
     <footer>
       <div id="linksFooter">
         <h3>Links</h3>
-        <Link to={`../pages/About`}>About Us</Link>
+        <Link to="about">About Us</Link>
         <Link to={`../pages/Form`}>Add a Discount</Link>
       </div>
       <p>
