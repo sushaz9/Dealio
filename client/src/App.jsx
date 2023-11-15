@@ -9,6 +9,8 @@ import Result from "./pages/Result";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 
+const API_KEY = import.meta.env.LOCATION_KEY;
+
 function App() {
   return (
     <BrowserRouter>
