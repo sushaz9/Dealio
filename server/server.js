@@ -5,10 +5,25 @@ const app = express();
 app.use(cors());
 const PORT = 8080;
 app.use(express.json());
+const axios = require("axios");
 
 const mongoose = require("mongoose");
 const Deal = require("./models/deal");
 mongoose.connect(process.env.DATABASE_URL);
+
+app.get("/map", async (request, response) => {
+  const { address } = request.query;
+
+  const API_location = `https://eu1.locationiq.com/v1/search?q=${address}&key=${process.env.LOCATION_KEY}&format=json`;
+
+  const res_location = await axios.get(API_location);
+  const wrangledData = {
+    display: res_location.data[0].display_name,
+    latitude: res_location.data[0].lat,
+    longitude: res_location.data[0].lon,
+  };
+  response.json(wrangledData);
+});
 
 app.get("/results", async (request, response) => {
   try {
