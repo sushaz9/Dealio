@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import QRCode from "react-qr-code"; // Import the QRCode component
 
 export default function Result({}) {
   const [result, setResult] = useState({});
@@ -27,8 +28,13 @@ export default function Result({}) {
       <h3>{result.offer}</h3>
       <img src={result.businessImage} alt="Business" />
       <h3>{result.address}</h3>
+
+      {result.voucher && (
+        <div>
+          <h4>QR Code:</h4>
+          <QRCode value={result.offer} />
+        </div>
+      )}
     </div>
   );
 }
-
-//add a map, add addresses
