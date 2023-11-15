@@ -14,6 +14,8 @@ import LoginButton from "./components/LoginButton";
 import LogoutButton from "./components/LogoutButton";
 import Profile from "./components/Profile";
 
+const API_KEY = import.meta.env.LOCATION_KEY;
+
 function App() {
   const { user, isAuthenticated, isLoading } = useAuth0();
   const admins = [
