@@ -7,14 +7,13 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Form from "../components/Form";
 
-function Home() {
+function Home({ favourites, setFavourites }) {
   const [results, setResults] = useState([]);
   const [location, setLocation] = useState("");
   const [deals, setDeals] = useState([]);
   const [discountDay, setDay] = useState("");
   const [category, setCategory] = useState("");
   // State initialisation. Uses useState hook to declare state variable 'favourites', and function 'setFavourites' to update this state. Initially an empty array.
-  const [favourites, setFavourites] = useState([]);
 
   // Uses useNavigate for navigation (rather than Link in the button)
   const navigate = useNavigate();

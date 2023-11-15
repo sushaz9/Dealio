@@ -1,4 +1,4 @@
-// import { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 // import axios from "axios";
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
@@ -22,6 +22,8 @@ function App() {
     "afennell@hotmail.co.uk",
   ];
 
+  const [favourites, setFavourites] = useState([]);
+
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -38,10 +40,20 @@ function App() {
       {!isAuthenticated && <LoginButton />}
       {admins.includes(user?.email)}
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route
+          path="/"
+          element={
+            <Home favourites={favourites} setFavourites={setFavourites} />
+          }
+        />
         <Route path="/about" element={<About />} />
         <Route path="/results/:id" element={<Result />} />
-        <Route path="/favourites" element={<Favourites />} />
+        <Route
+          path="/favourites"
+          element={
+            <Favourites favourites={favourites} setFavourites={setFavourites} />
+          }
+        />
         {/* <Route path="/form" element={<Form />} /> */}
       </Routes>
       <Footer />
