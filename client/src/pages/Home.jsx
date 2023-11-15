@@ -1,5 +1,5 @@
 // import Featured from "../components/Featured";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import Slider from "react-slick";
@@ -13,6 +13,11 @@ function Home() {
   const [deals, setDeals] = useState([]);
   const [discountDay, setDay] = useState("");
   const [category, setCategory] = useState("");
+  // State initialisation. Uses useState hook to declare state variable 'favourites', and function 'setFavourites' to update this state. Initially an empty array.
+  const [favourites, setFavourites] = useState([]);
+
+  // Uses useNavigate for navigation (rather than Link in the button)
+  const navigate = useNavigate();
 
   useEffect(() => {
     getResults();
@@ -39,6 +44,12 @@ function Home() {
     setDay(event.target.value);
   }
 
+  // function 'handleFavourite' takes result parameter and logs message to console. The updates favourites state by creating new array, which includes existing favourites and adds new result.
+  const handleFavourite = (result) => {
+    console.log("Adding to favourites:", result);
+    setFavourites([...favourites, result]);
+  };
+
   const filteredResults = results.filter(function (result) {
     return (
       (result.location === location || location === "") &&
@@ -46,6 +57,8 @@ function Home() {
       (result.discountDay === discountDay || discountDay === "")
     );
   });
+
+  console.log("Favourites state before link:", favourites);
 
   return (
     <div>
@@ -101,6 +114,8 @@ function Home() {
               <h3>{result.category}</h3>
               <h3>{result.offer}</h3>
               <img src={result.businessImage} alt={result.businessName} />
+              {/* Add favourite button. Triggers function. Arrow fuction passes result parameter to the function. */}
+              <button onClick={() => handleFavourite(result)}>Favourite</button>
             </div>
           );
         })}
@@ -119,6 +134,13 @@ function Home() {
         </Slider>
         <Form deals={deals} setDeals={setDeals} />;
       </div>
+      {/* Pass favourites to Favourites component. Passes the object with a state property, which contains favourites array. Should be accessible in Favourites.jsx through props. */}
+      <button
+        onClick={() => navigate("/favourites", { state: { favourites } })}
+      >
+        Go to Favourites
+      </button>
+      {/* <Link to="/favourites">Go to Favourites</Link> */}
     </div>
   );
 }
