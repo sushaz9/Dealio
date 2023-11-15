@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import QRCode from "react-qr-code"; // Import the QRCode component
 
 const API_KEY = import.meta.env.VITE_LOCATION_KEY;
 
@@ -41,8 +42,12 @@ export default function Result({}) {
       <img src={result.businessImage} alt="Business" />
       <h3>{result.address}</h3>
 
+      {result.voucher && (
+        <div>
+          <h4>QR Code:</h4>
+          <QRCode value={result.offer} />
+        </div>
       {result.address && <button onClick={handleMap}>View Map</button>}
-
       {showMap && (
         <img
           src={`https://maps.locationiq.com/v3/staticmap?key=${API_KEY}&center=${location.latitude},${location.longitude}&zoom=20&markers=${location.latitude},${location.longitude}|icon:large-blue-cutout&format=png&markers=icon:large-blue-cutout`}
