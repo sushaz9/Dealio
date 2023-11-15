@@ -5,8 +5,8 @@ export default function Footer() {
     <footer>
       <div id="linksFooter">
         <h3>Links</h3>
-        <Link to={`../pages/About`}>About Us</Link>
-        <Link to={`../pages/Form`}>Add a Discount</Link>
+        <Link to="about">About Us</Link>
+        <Link to="formpage">Add a Discount</Link>
       </div>
       <p>
         Created by Andy Fennell, Susie Harrison, Luke Reynolds and Cordelia
