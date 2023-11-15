@@ -12,12 +12,15 @@ function Home({ favourites, setFavourites }) {
   const [location, setLocation] = useState("");
   const [discountDay, setDay] = useState("");
   const [category, setCategory] = useState("");
-  // State initialisation. Uses useState hook to declare state variable 'favourites', and function 'setFavourites' to update this state. Initially an empty array.
 
   // Uses useNavigate for navigation (rather than Link in the button)
   const navigate = useNavigate();
 
   useEffect(() => {
+    const storedFavorites = localStorage.getItem("favorites");
+    if (storedFavorites) {
+      setFavourites(JSON.parse(storedFavorites));
+    }
     getResults();
   }, []);
 
@@ -46,6 +49,7 @@ function Home({ favourites, setFavourites }) {
   const handleFavourite = (result) => {
     console.log("Adding to favourites:", result);
     setFavourites([...favourites, result]);
+    localStorage.setItem("favorites", JSON.stringify([...favourites, result]));
   };
 
   const filteredResults = results.filter(function (result) {
@@ -137,7 +141,6 @@ function Home({ favourites, setFavourites }) {
       >
         Go to Favourites
       </button>
-      {/* <Link to="/favourites">Go to Favourites</Link> */}
     </div>
   );
 }

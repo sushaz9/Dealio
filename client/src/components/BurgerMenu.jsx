@@ -20,6 +20,7 @@ const BurgerMenu = () => {
         <Link to={`/`}>Home</Link>
         <Link to="favourites">Favourites</Link>
         <Link to="about">About</Link>
+        <Link to="formpage">Add a discount</Link>
       </div>
     </div>
   );
