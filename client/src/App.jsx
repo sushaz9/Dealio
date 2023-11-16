@@ -50,7 +50,12 @@ function App() {
           }
         />
         <Route path="/about" element={<About />} />
-        <Route path="/results/:id" element={<Result />} />
+        <Route
+          path="/results/:id"
+          element={
+            <Result favourites={favourites} setFavourites={setFavourites} />
+          }
+        />
         <Route
           path="/favourites"
           element={

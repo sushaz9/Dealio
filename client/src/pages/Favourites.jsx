@@ -25,6 +25,7 @@ const Favourites = ({ favourites, setFavourites }) => {
 
   return (
     <div>
+      <h1>Favourites</h1>
       {favourites.map((favourite) => {
         return (
           <div key={favourite._id}>
@@ -36,6 +37,7 @@ const Favourites = ({ favourites, setFavourites }) => {
             <h3>{favourite.category}</h3>
             <h3>{favourite.offer}</h3>
             <img src={favourite.businessImage} alt={favourite.businessName} />
+
             <button onClick={() => handleRemoveFavorite(favourite)}>
               Remove from Favorites
             </button>

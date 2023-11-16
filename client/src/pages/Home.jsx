@@ -52,8 +52,18 @@ function Home({ favourites, setFavourites }) {
   // function 'handleFavourite' takes result parameter and logs message to console. The updates favourites state by creating new array, which includes existing favourites and adds new result.
   const handleFavourite = (result) => {
     console.log("Adding to favourites:", result);
-    setFavourites([...favourites, result]);
-    localStorage.setItem("favorites", JSON.stringify([...favourites, result]));
+
+    // Check if the result is already in favorites
+    const isAlreadyAdded = favourites.some((fav) => fav._id === result._id);
+
+    if (!isAlreadyAdded) {
+      // If not, add to favorites
+      setFavourites([...favourites, result]);
+      localStorage.setItem(
+        "favorites",
+        JSON.stringify([...favourites, result])
+      );
+    }
   };
 
   const filteredResults = results.filter(function (result) {
@@ -127,6 +137,9 @@ function Home({ favourites, setFavourites }) {
           {/* Add H2 tag when there are filtered results */}
           {filteredResults.length > 0 && <h2>Results</h2>}
           {filteredResults.map((result) => {
+            const isAlreadyAdded = favourites.some(
+              (fav) => fav._id === result._id
+            );
             return (
               <div key={result._id}>
                 <Link to={`/results/${result._id}`}>
@@ -139,8 +152,11 @@ function Home({ favourites, setFavourites }) {
                 <h3>{result.offer}</h3>
                 <img src={result.businessImage} alt={result.businessName} />
                 {/* Add favourite button. Triggers function. Arrow fuction passes result parameter to the function. */}
-                <button onClick={() => handleFavourite(result)}>
-                  Favourite
+                <button
+                  onClick={() => handleFavourite(result)}
+                  disabled={isAlreadyAdded}
+                >
+                  {isAlreadyAdded ? "Added to Favorites" : "Add to Favorites"}
                 </button>
               </div>
             );
