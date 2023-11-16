@@ -153,7 +153,9 @@ function Home({ favourites, setFavourites }) {
           {results.map((result) => {
             return (
               <div key={result._id}>
-                <h2>{result.businessName}</h2>
+                <Link to={`/results/${result._id}`}>
+                  <h2>{result.businessName}</h2>
+                </Link>
                 <img src={result.logoImage} alt={result.businessName} />
               </div>
             );
