@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 // import axios from "axios";
+import "./reset.css";
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import About from "./pages/About";
@@ -34,14 +35,6 @@ function App() {
   return (
     <Router>
       <Header />
-      {isAuthenticated && (
-        <div>
-          <Profile />
-          <LogoutButton />
-        </div>
-      )}
-      {!isAuthenticated && <LoginButton />}
-      {admins.includes(user?.email)}
       <Routes>
         <Route
           path="/"
@@ -65,6 +58,14 @@ function App() {
         <Route path="/formpage" element={<FormPage />} />
       </Routes>
       <Footer />
+      {isAuthenticated && (
+        <div>
+          <Profile />
+          <LogoutButton />
+        </div>
+      )}
+      {!isAuthenticated && <LoginButton />}
+      {admins.includes(user?.email)}
     </Router>
   );
 }

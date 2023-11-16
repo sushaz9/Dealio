@@ -1,20 +1,17 @@
-// import Featured from "../components/Featured";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Form from "../components/Form";
 
 function Home({ favourites, setFavourites }) {
   const [results, setResults] = useState([]);
   const [location, setLocation] = useState("");
   const [discountDay, setDay] = useState("");
   const [category, setCategory] = useState("");
-  const [showFilteredResults, setShowFilteredResults] = useState(false); // New state
+  const [showFilteredResults, setShowFilteredResults] = useState(false);
 
-  // Uses useNavigate for navigation (rather than Link in the button)
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -49,7 +46,6 @@ function Home({ favourites, setFavourites }) {
     handleFilterChange();
   }
 
-  // function 'handleFavourite' takes result parameter and logs message to console. The updates favourites state by creating new array, which includes existing favourites and adds new result.
   const handleFavourite = (result) => {
     console.log("Adding to favourites:", result);
 
@@ -81,83 +77,92 @@ function Home({ favourites, setFavourites }) {
   };
 
   const handleFilterChange = () => {
-    // Reset the showFilteredResults state when filters change
     setShowFilteredResults(false);
   };
 
   return (
-    <div>
-      {/* <img src="" /> */}
-      <p>Dealio</p>
-      <form onChange={handleLocationFilter}>
-        <label>Filter by location:</label>
-        <select name="location">
-          <option value=""> All </option>
-          <option value="UK wide"> UK Wide </option>
-          <option value="Manchester"> Manchester </option>
-          <option value="Liverpool"> Liverpool </option>
-        </select>
-      </form>
+    <main>
+      <div id="opening-div">
+        <img id="mainImg1" src="../src/assets/unsplash/restaurant-large.jpg" />
+        {/* <p></p> */}
+      </div>
+      <section id="filter">
+        <form onChange={handleLocationFilter}>
+          <label>Filter by location:</label>
+          <select name="location">
+            <option value=""> All </option>
+            <option value="UK wide"> UK Wide </option>
+            <option value="Manchester"> Manchester </option>
+            <option value="Liverpool"> Liverpool </option>
+          </select>
+        </form>
 
-      <form onChange={handleCategoryFilter}>
-        <label>Filter by category:</label>
-        <select name="category">
-          <option value=""> All </option>
-          <option value="Fast food"> Fast Food </option>
-          <option value="Japanese"> Japanese </option>
-          <option value="Street food"> Street Food </option>
-          <option value="Fine dining"> Fine Dining </option>
-          <option value="Bar"> Bar </option>
-          <option value="Pub"> Pub </option>
-        </select>
-      </form>
+        <form onChange={handleCategoryFilter}>
+          <label>Filter by category:</label>
+          <select name="category">
+            <option value=""> All </option>
+            <option value="Fast food"> Fast Food </option>
+            <option value="Japanese"> Japanese </option>
+            <option value="Street food"> Street Food </option>
+            <option value="Fine dining"> Fine Dining </option>
+            <option value="Bar"> Bar </option>
+            <option value="Pub"> Pub </option>
+          </select>
+        </form>
 
-      <form onChange={handleDayFilter}>
-        <label>Filter by day of discount:</label>
-        <select name="discountday">
-          <option value=""> All </option>
-          <option value="Weekday"> All Weekdays </option>
-          <option value="Weekend"> All Weekend Days </option>
-          <option value="Monday"> Monday </option>
-          <option value="Tuesday"> Tuesday </option>
-          <option value="Wednesday"> Wednesday </option>
-          <option value="Thursday"> Thursday </option>
-          <option value="Friday"> Friday </option>
-          <option value="Saturday"> Saturday </option>
-          <option value="Sunday"> Sunday </option>
-        </select>
-      </form>
+        <form onChange={handleDayFilter}>
+          <label>Filter by day of discount:</label>
+          <select name="discountday">
+            <option value=""> All </option>
+            <option value="Weekday"> All Weekdays </option>
+            <option value="Weekend"> All Weekend Days </option>
+            <option value="Monday"> Monday </option>
+            <option value="Tuesday"> Tuesday </option>
+            <option value="Wednesday"> Wednesday </option>
+            <option value="Thursday"> Thursday </option>
+            <option value="Friday"> Friday </option>
+            <option value="Saturday"> Saturday </option>
+            <option value="Sunday"> Sunday </option>
+          </select>
+        </form>
+        <button onClick={handleShowFilteredResults}>
+          Show Filtered Results
+        </button>
+      </section>
 
-      {/* Button to show filtered results */}
-      <button onClick={handleShowFilteredResults}>Show Filtered Results</button>
-
-      {/* Display filtered results only if the button is clicked */}
       {showFilteredResults && (
         <div id="results">
-          {/* Add H2 tag when there are filtered results */}
-          {filteredResults.length > 0 && <h2>Results</h2>}
+          {filteredResults.length > 0 && <h2 id="resultsTitle">Results</h2>}
           {filteredResults.map((result) => {
             const isAlreadyAdded = favourites.some(
               (fav) => fav._id === result._id
             );
             return (
-              <div key={result._id}>
+              <div className="resultDiv" key={result._id}>
                 <Link to={`/results/${result._id}`}>
                   <h2>{result.businessName}</h2>
+                  <img
+                    className="result-logo"
+                    src={result.logoImage}
+                    alt={result.businessName}
+                  />
                 </Link>
-                <img src={result.logoImage} alt={result.businessName} />
                 <h3>{result.location}</h3>
                 <h3>{result.discountDay}</h3>
-                <h3>{result.category}</h3>
                 <h3>{result.offer}</h3>
-                <img src={result.businessImage} alt={result.businessName} />
-                {/* Add favourite button. Triggers function. Arrow fuction passes result parameter to the function. */}
-                <button
+                <img
+                  className="result-img"
+                  src={result.businessImage}
+                  alt={result.businessName}
+                />
+                <button id="fave-button"
                   onClick={() => handleFavourite(result)}
                   disabled={isAlreadyAdded}
                 >
                   {isAlreadyAdded ? "Added to Favorites" : "Add to Favorites"}
                 </button>
+                
+              
               </div>
             );
           })}
@@ -168,21 +173,25 @@ function Home({ favourites, setFavourites }) {
         <Slider autoplay={true} autoplaySpeed={4000}>
           {results.map((result) => {
             return (
-              <div key={result._id}>
-                <h2>{result.businessName}</h2>
+              <div className="featured-div" key={result._id}>
+                <Link to={`/results/${result._id}`}>
+                  <h2>{result.businessName}</h2>
+                </Link>
                 <img src={result.logoImage} alt={result.businessName} />
               </div>
             );
           })}
         </Slider>
       </div>
-      {/* Pass favourites to Favourites component. Passes the object with a state property, which contains favourites array. Should be accessible in Favourites.jsx through props. */}
-      <button
-        onClick={() => navigate("/favourites", { state: { favourites } })}
-      >
-        Go to Favourites
-      </button>
-    </div>
+      <div id="before-footer">
+        <button
+          className="go-to-faves-btn"
+          onClick={() => navigate("/favourites", { state: { favourites } })}
+        >
+          Go to Favourites
+        </button>
+      </div>
+    </main>
   );
 }
 
