@@ -7,80 +7,95 @@ mongoose.connect(process.env.DATABASE_URL);
 async function seed() {
   await Deal.create([
     {
-      businessName: "Maray",
-      offer: "2 dine for £40",
+      businessName: "Tonight Josephine",
+      offer: "2 cocktails for £12",
       discountDay: "Weekday",
       voucher: false,
       location: "Liverpool",
-      category: "Street food",
-      address: "91 Bold Street Liverpool L1 4HF",
+      category: "Bar",
+      address: "87-89 Hanover Street Liverpool L1 3DZ",
       businessImage:
-        "https://media-cdn.tripadvisor.com/media/photo-m/1280/1a/37/ec/c4/maray-is-a-fabulously.jpg",
-      logoImage: "https://maray.co.uk/wp-content/uploads/Rose-icon.png",
+        "https://i2-prod.liverpoolecho.co.uk/incoming/article25369750.ece/ALTERNATES/s615/0_Tonight-Josephine-Liverpool.jpg",
+      logoImage:
+        "https://www.tonightjosephine.co.uk/wp-content/uploads/2023/01/tonight-josephine.png",
     },
     {
-      businessName: "Almost Famous",
-      offer: "Weekday £10 Burger & Fries 12 pm - 4 pm",
+      businessName: "Revolution Albert Dock",
+      offer: "2-4-1 cocktails (time restrictions apply)",
       discountDay: "Weekday",
       voucher: false,
       location: "Liverpool",
-      category: "Fast food",
-      address: "11-13 Parr Street Liverpool L1 4JN",
+      category: "Bar",
+      address: "Unit 4M Atlantic Pavilion Albert Dock Liverpool L3 4AE",
       businessImage:
-        "https://www.tagvenue.com/resize/a8/f1/widen-1680-noupsize;15710-almost-famous-liverpool-venue.jpeg",
+        "https://theguideliverpool.com/wp-content/uploads/2020/12/revolution-large-img1.jpg",
       logoImage:
-        "https://static.wixstatic.com/media/08f7bc_a44ae6d1e1a94fbcb7db5bc30f964135~mv2.png/v1/crop/x_1,y_0,w_930,h_615/fill/w_418,h_277,fp_0.50_0.50,q_85,usm_0.66_1.00_0.01,enc_auto/08f7bc_a44ae6d1e1a94fbcb7db5bc30f964135~mv2.png",
+        "https://fixr-cdn.fixr.co/images/sales_account/logo/da1832ac4f0d4366b80898395cc96160.jpeg",
     },
     {
-      businessName: "Pizza Hut",
-      offer: "50% off when you spend £25 or more",
-      discountDay: "Tuesday",
-      voucher: true,
-      location: "UK wide",
-      category: "Fast food",
-      businessImage:
-        "https://www.verdictfoodservice.com/wp-content/uploads/sites/17/2020/09/shutterstock_1150633349.jpg",
-      logoImage: "https://logowik.com/content/uploads/images/130_pizzahut.jpg",
-    },
-    {
-      businessName: "63 Degrees",
-      offer: "5 course tasting menu £45 on Tuesdays",
-      discountDay: "Tuesday",
+      businessName: "Be At One",
+      offer: "Happy Hour 2-4-1 (time restrictions apply)",
+      discountDay: "All",
       voucher: false,
-      location: "Manchester",
-      category: "Fine dining",
-      address: "104 High Street Northern Quarter Manchester M4 1HQ",
+      location: "Liverpool",
+      category: "Bar",
+      address: "13-21 Seel Street Liverpool L1 4AU",
       businessImage:
-        "https://restaurantsofmanchester.com/photos/french/63degrees-outside.jpg",
+        "https://www.spccs1.co.uk/ImageAssets/dd0c162e513b4c659866ad2a86193d0a.JPG",
       logoImage:
-        "https://restaurantsofmanchester.co.uk/photos/french/63degrees-logo500.jpg",
+        "https://hospitalityrewards.co.uk/wp-content/uploads/2022/10/be-at-one-logo.png",
     },
     {
-      businessName: "The River Restaurant at The Lowry Hotel",
-      offer: "Sunday Lunch from £29.95",
-      discountDay: "Sunday",
+      businessName: "Revolucion de Cuba",
+      offer: "2-4-1 cocktails / £3.50 pints of Mahou (time restrictions apply)",
+      discountDay: "Weekday",
       voucher: false,
-      location: "Manchester",
-      category: "Fine dining",
-      address: "The Lowry Hotel, 50 Dearmans Pl, Salford M3 5LH",
+      location: "Liverpool",
+      category: "Bar",
+      address: "Unit 17 Albert Dock Liverpool L3 4AF",
       businessImage:
-        "https://www.restaurantsofmanchester.com/photos/british/riverrestaurant-restaurant.jpg",
+        "https://media-cdn.tripadvisor.com/media/photo-s/10/bf/05/16/revolucion-de-cuba-albert.jpg",
       logoImage:
-        "https://www.thelowryhotel.com/media/2294/river-restaurant.png",
+        "https://downtowninbusiness.com/wp-content/uploads/2018/01/Revolucion-De-Cuba.jpg",
     },
     {
-      businessName: "Cottonopolis",
+      businessName: "Bierkeller Liverpool",
       offer:
-        "Enjoy one brunch dish and bottomless drinks every weekend until 15:00",
-      discountDay: "Weekend",
+        "Madri, Tanqueray & Tonic, Prosecco - all £4 each (time restrictions apply)",
+      discountDay: "Weekday",
       voucher: false,
-      location: "Manchester",
-      category: "Japanese",
-      address: "16 Newton Street, Manchester M1 2AE",
+      location: "Liverpool",
+      category: "Bar",
+      address: "6 Thomas Steers Way Liverpool L1 8LW",
       businessImage:
-        "https://www.manchesterbars.com/photos/cottonopolis-bar.jpg",
+        "https://www.tagvenue.com/upload/be/f9/5912-bierkeller-hall-room.jpg",
       logoImage:
-        "https://www.cottonopolis-nq.com/wp-content/themes/cottonopolis/images/logo.svg",
+        "https://www.antreclimited.com/wp-content/uploads/2018/09/bierkeller-logo.jpg",
+    },
+    {
+      businessName: "The Pilgrim",
+      offer: "Triples £2.75",
+      discountDay: "All",
+      voucher: false,
+      location: "Liverpool",
+      category: "Pub",
+      address: "34 Pilgrim Street Liverpool L1 9HB",
+      businessImage:
+        "https://i2-prod.liverpoolecho.co.uk/incoming/article24664064.ece/ALTERNATES/s615/1_The-Pilgrim-on-Pilgrim-Street-Liverpool-Photo-by-Colin-Lane.jpg",
+      logoImage:
+        "https://media-cdn.tripadvisor.com/media/photo-s/10/d2/3f/14/the-pilgrim-pub-great_rotated_90.jpg",
+    },
+    {
+      businessName: "The Ship & Mitre",
+      offer: "German bottled beers - any 4 for £18",
+      discountDay: "All",
+      voucher: false,
+      location: "Liverpool",
+      category: "Pub",
+      address: "133 Dale Street Liverpool L2 2JH",
+      businessImage: "https://tonightinliverpool.co.uk/images/ship3.jpg",
+      logoImage:
+        "https://the-ship-and-mitre.myshopify.com/cdn/shop/files/ship-logo-building_800x.jpg?v=1614313008cd ",
     },
   ]);
 
@@ -89,27 +104,3 @@ async function seed() {
 }
 
 seed();
-
-[
-  {
-    businessName: "Sizzle Grill",
-    offer: "Weekend Feast",
-    discountDay: "Saturday",
-    voucher: false,
-    location: "Liverpool",
-    category: "BBQ",
-    businessImage: "https://loremflickr.com/600/600/restaurant",
-    logoImage: "https://loremflickr.com/400/400/logo,restaurant",
-  },
-
-  {
-    businessName: "Savor Delights",
-    offer: "Buy One Get One Free",
-    discountDay: "Wednesday",
-    voucher: true,
-    location: "Liverpool",
-    category: "Fusion",
-    businessImage: "https://loremflickr.com/600/600/restaurant",
-    logoImage: "https://loremflickr.com/400/400/logo,restaurant",
-  },
-];

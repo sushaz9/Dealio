@@ -48,6 +48,7 @@ export default function Result({}) {
           <QRCode value={result.offer} />
         </div>
       )}
+
       {result.address && <button onClick={handleMap}>View Map</button>}
       {showMap && (
         <img
