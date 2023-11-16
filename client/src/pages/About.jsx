@@ -4,6 +4,12 @@ export default function About() {
   return (
     <>
       <h2>About the Developers</h2>
+      <div className="video-container">
+        <video width="100%" controls>
+          <source src="../src/assets/video/about_us.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
       <div className="about-box" id="andy">
         <h2>Andy</h2>
         <p>
