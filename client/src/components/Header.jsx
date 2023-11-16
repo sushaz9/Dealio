@@ -1,12 +1,15 @@
 import React from "react";
 import BurgerMenu from "./BurgerMenu";
+import { Link } from "react-router-dom";
 
 function header() {
   return (
-    <div>
-      <h1>Dealio</h1>
+    <header>
+      <Link to={`/`}>
+        <img src="../src/assets/DEALIO_nbg.png" />
+      </Link>
       <BurgerMenu />
-    </div>
+    </header>
   );
 }
 
