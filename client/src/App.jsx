@@ -34,14 +34,6 @@ function App() {
   return (
     <Router>
       <Header />
-      {isAuthenticated && (
-        <div>
-          <Profile />
-          <LogoutButton />
-        </div>
-      )}
-      {!isAuthenticated && <LoginButton />}
-      {admins.includes(user?.email)}
       <Routes>
         <Route
           path="/"
@@ -60,6 +52,14 @@ function App() {
         <Route path="/formpage" element={<FormPage />} />
       </Routes>
       <Footer />
+      {isAuthenticated && (
+        <div>
+          <Profile />
+          <LogoutButton />
+        </div>
+      )}
+      {!isAuthenticated && <LoginButton />}
+      {admins.includes(user?.email)}
     </Router>
   );
 }

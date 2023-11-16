@@ -21,6 +21,7 @@ const BurgerMenu = () => {
         <Link to="favourites">Favourites</Link>
         <Link to="about">About</Link>
         <Link to="formpage">Add a discount</Link>
+        <Link to="LoginButton">Log in</Link>
       </div>
     </div>
   );
