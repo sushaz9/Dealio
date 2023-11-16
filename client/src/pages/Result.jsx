@@ -10,7 +10,7 @@ export default function Result({ favourites, setFavourites }) {
   const [result, setResult] = useState({});
   const [location, setLocation] = useState({});
   const [showMap, setShowMap] = useState(false);
-  const [isAddedToFavorites, setIsAddedToFavorites] = useState(false);
+  const [isAddedToFavourites, setIsAddedToFavourites] = useState(false);
 
   useEffect(() => {
     getResult();
@@ -22,9 +22,9 @@ export default function Result({ favourites, setFavourites }) {
       const res = await axios.get(API);
       setResult(res.data);
 
-      // Check if the current result is already in favorites
+      // Check if the current result is already in favourites
       const isAlreadyAdded = favourites.some((fav) => fav._id === res.data._id);
-      setIsAddedToFavorites(isAlreadyAdded);
+      setIsAddedToFavourites(isAlreadyAdded);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -40,17 +40,17 @@ export default function Result({ favourites, setFavourites }) {
   }
 
   const handleFavourite = () => {
-    // Check if the result is already in favorites
+    // Check if the result is already in favourites
     const isAlreadyAdded = favourites.some((fav) => fav._id === result._id);
 
     if (!isAlreadyAdded) {
-      // If not, add to favorites
+      // If not, add to favourites
       setFavourites([...favourites, result]);
       localStorage.setItem(
-        "favorites",
+        "favourites",
         JSON.stringify([...favourites, result])
       );
-      setIsAddedToFavorites(true); // Update the state to disable the button
+      setIsAddedToFavourites(true); // Update the state to disable the button
     }
   };
 
@@ -71,9 +71,9 @@ export default function Result({ favourites, setFavourites }) {
 
         {result.address && <button onClick={handleMap}>View Map</button>}
 
-        {/* Button to add to favorites */}
-        <button onClick={handleFavourite} disabled={isAddedToFavorites}>
-          {isAddedToFavorites ? "Added to Favorites" : "Add to Favorites"}
+        {/* Button to add to favourites */}
+        <button onClick={handleFavourite} disabled={isAddedToFavourites}>
+          {isAddedToFavourites ? "Added to Favourites" : "Add to Favourites"}
         </button>
 
         {showMap && (

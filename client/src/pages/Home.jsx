@@ -15,9 +15,9 @@ function Home({ favourites, setFavourites }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const storedFavorites = localStorage.getItem("favorites");
-    if (storedFavorites) {
-      setFavourites(JSON.parse(storedFavorites));
+    const storedFavourites = localStorage.getItem("favourites");
+    if (storedFavourites) {
+      setFavourites(JSON.parse(storedFavourites));
     }
     getResults();
   }, []);
@@ -49,14 +49,14 @@ function Home({ favourites, setFavourites }) {
   const handleFavourite = (result) => {
     console.log("Adding to favourites:", result);
 
-    // Check if the result is already in favorites
+    // Check if the result is already in favourites
     const isAlreadyAdded = favourites.some((fav) => fav._id === result._id);
 
     if (!isAlreadyAdded) {
-      // If not, add to favorites
+      // If not, add to favourites
       setFavourites([...favourites, result]);
       localStorage.setItem(
-        "favorites",
+        "favourites",
         JSON.stringify([...favourites, result])
       );
     }
@@ -84,46 +84,70 @@ function Home({ favourites, setFavourites }) {
     <main>
       <div id="opening-div">
         <img id="mainImg1" src="../src/assets/unsplash/restaurant4.png" />
-        {/* <p></p> */}
+        <div className="home-box" id="home">
+          <h1>Welcome to Dealio</h1>
+          <p>
+            The app to find deals in your area, whether you are looking for
+            discounts on drinks, or free food, we are here to help!
+          </p>
+          <br></br>
+          <p>
+            Simply use the filters below to find the deals you want. Click on
+            the results you fancy for more details, and save your faves by
+            pressing the add to favourites button. Your favourites can be
+            accessed from the main menu.
+          </p>
+          <br></br>
+          <p>So dive in to get your deal, and remember,</p>
+          <br></br>
+          <h2>NEVER PAY FULL PRICE!</h2>
+        </div>
       </div>
+
       <section id="filter">
         <form onChange={handleLocationFilter}>
-          <label>Filter by location:</label>
-          <select name="location">
-            <option value=""> All </option>
-            <option value="UK wide"> UK Wide </option>
-            <option value="Manchester"> Manchester </option>
-            <option value="Liverpool"> Liverpool </option>
-          </select>
+          <div className="filter-group">
+            <label className="filter-label">Filter by location:</label>
+            <select name="location" className="filter-select">
+              <option value=""> All </option>
+              <option value="UK wide"> UK Wide </option>
+              <option value="Manchester"> Manchester </option>
+              <option value="Liverpool"> Liverpool </option>
+            </select>
+          </div>
         </form>
 
         <form onChange={handleCategoryFilter}>
-          <label>Filter by category:</label>
-          <select name="category">
-            <option value=""> All </option>
-            <option value="Fast food"> Fast Food </option>
-            <option value="Japanese"> Japanese </option>
-            <option value="Street food"> Street Food </option>
-            <option value="Fine dining"> Fine Dining </option>
-            <option value="Bar"> Bar </option>
-            <option value="Pub"> Pub </option>
-          </select>
+          <div className="filter-group">
+            <label className="filter-label">Filter by category:</label>
+            <select name="category" className="filter-select">
+              <option value=""> All </option>
+              <option value="Fast food"> Fast Food </option>
+              <option value="Japanese"> Japanese </option>
+              <option value="Street food"> Street Food </option>
+              <option value="Fine dining"> Fine Dining </option>
+              <option value="Bar"> Bar </option>
+              <option value="Pub"> Pub </option>
+            </select>
+          </div>
         </form>
 
         <form onChange={handleDayFilter}>
-          <label>Filter by day of discount:</label>
-          <select name="discountday">
-            <option value=""> All </option>
-            <option value="Weekday"> All Weekdays </option>
-            <option value="Weekend"> All Weekend Days </option>
-            <option value="Monday"> Monday </option>
-            <option value="Tuesday"> Tuesday </option>
-            <option value="Wednesday"> Wednesday </option>
-            <option value="Thursday"> Thursday </option>
-            <option value="Friday"> Friday </option>
-            <option value="Saturday"> Saturday </option>
-            <option value="Sunday"> Sunday </option>
-          </select>
+          <div className="filter-group">
+            <label className="filter-label">Filter by day of discount:</label>
+            <select name="discountday" className="filter-select">
+              <option value=""> All </option>
+              <option value="Weekday"> All Weekdays </option>
+              <option value="Weekend"> All Weekend Days </option>
+              <option value="Monday"> Monday </option>
+              <option value="Tuesday"> Tuesday </option>
+              <option value="Wednesday"> Wednesday </option>
+              <option value="Thursday"> Thursday </option>
+              <option value="Friday"> Friday </option>
+              <option value="Saturday"> Saturday </option>
+              <option value="Sunday"> Sunday </option>
+            </select>
+          </div>
         </form>
         <button onClick={handleShowFilteredResults}>
           Show Filtered Results
@@ -160,7 +184,7 @@ function Home({ favourites, setFavourites }) {
                   onClick={() => handleFavourite(result)}
                   disabled={isAlreadyAdded}
                 >
-                  {isAlreadyAdded ? "Added to Favorites" : "Add to Favorites"}
+                  {isAlreadyAdded ? "Added to Favourites" : "Add to Favourites"}
                 </button>
               </div>
             );

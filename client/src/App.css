@@ -112,6 +112,21 @@ header img {
   width: 100vw;
 }
 
+.home-box {
+  margin-bottom: 15px;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: justify;
+}
+
+#home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #e3edf7;
+  padding-bottom: 20px;
+}
+
 /* filter */
 
 #filter {
@@ -121,19 +136,9 @@ header img {
   align-items: flex-end;
 }
 
-#filter select {
-  background-color: rgb(176, 173, 173);
-  border: none;
-  border-radius: 80px;
-  color: white;
-  width: 40vw;
-  padding: 5px;
-  text-align: center;
-  margin: 0px 10px;
-}
-
 #filter form {
-  margin: 20px;
+  display: flex;
+  align-items: center;
 }
 
 #filter button {
@@ -145,8 +150,28 @@ header img {
   align-self: center;
 }
 
-#filter label {
-  width: 40vw;
+.filter-group {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.filter-label {
+  flex: 0 0 auto;
+  margin-right: 10px;
+  width: auto;
+  text-align: right;
+}
+
+.filter-select {
+  flex: 1;
+  width: 100%;
+  background-color: rgb(176, 173, 173);
+  border: none;
+  border-radius: 80px;
+  color: white;
+  padding: 5px;
+  margin: 0px 10px;
 }
 
 /* results  */
@@ -268,7 +293,6 @@ footer p {
 .about-box {
   margin: 5px;
   margin-bottom: 15px;
-  background-color: #f5f1ec;
   border-radius: 10px;
   padding: 10px;
   text-align: justify;

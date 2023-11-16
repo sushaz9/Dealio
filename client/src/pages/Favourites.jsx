@@ -4,23 +4,23 @@ const Favourites = ({ favourites, setFavourites }) => {
   console.log("Favourites component mounted");
 
   useEffect(() => {
-    // Retrieve favorites from local storage when the component mounts
-    const storedFavorites = localStorage.getItem("favorites");
-    if (storedFavorites) {
-      setFavourites(JSON.parse(storedFavorites));
+    // Retrieve favourites from local storage when the component mounts
+    const storedFavourites = localStorage.getItem("favourites");
+    if (storedFavourites) {
+      setFavourites(JSON.parse(storedFavourites));
     }
   }, []); // Ensure the effect runs only on mount
 
-  const handleRemoveFavorite = (removedFavorite) => {
-    // Update state to remove the specified favorite
-    setFavourites((prevFavorites) =>
-      prevFavorites.filter((favorite) => favorite !== removedFavorite)
+  const handleRemoveFavourite = (removedFavourite) => {
+    // Update state to remove the specified favourite
+    setFavourites((prevFavourites) =>
+      prevFavourites.filter((favourite) => favourite !== removedFavourite)
     );
 
-    const updatedFavorites = favourites.filter(
-      (favorite) => favorite !== removedFavorite
+    const updatedFavourites = favourites.filter(
+      (favourite) => favourite !== removedFavourite
     );
-    localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+    localStorage.setItem("favourites", JSON.stringify(updatedFavourites));
   };
 
   return (
@@ -28,7 +28,7 @@ const Favourites = ({ favourites, setFavourites }) => {
       <h1>Favourites</h1>
       {favourites.length === 0 ? (
         <div>
-          <h2>No favorites yet.</h2>
+          <h2>No favourites yet.</h2>
           <img id="mainImg1" src="../src/assets/unsplash/bar2.png" />
         </div>
       ) : (
@@ -54,9 +54,9 @@ const Favourites = ({ favourites, setFavourites }) => {
 
               <button
                 id="remove-fav"
-                onClick={() => handleRemoveFavorite(favourite)}
+                onClick={() => handleRemoveFavourite(favourite)}
               >
-                Remove from Favorites
+                Remove from Favourites
               </button>
             </div>
           );
