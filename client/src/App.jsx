@@ -11,9 +11,9 @@ import FormPage from "./pages/FormPage";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import { useAuth0 } from "@auth0/auth0-react";
-import LoginButton from "./components/LoginButton";
 import LogoutButton from "./components/LogoutButton";
 import Profile from "./components/Profile";
+import LoginButton from "./components/LoginButton";
 
 const API_KEY = import.meta.env.LOCATION_KEY;
 

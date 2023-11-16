@@ -55,32 +55,34 @@ export default function Result({ favourites, setFavourites }) {
   };
 
   return (
-    <div key={result._id}>
-      <h2>{result.businessName}</h2>
-      <h3>{result.offer}</h3>
-      <img src={result.businessImage} alt="Business" />
-      <h3>{result.address}</h3>
+    <div id="fav">
+      <div className="resultDiv" key={result._id}>
+        <h2>{result.businessName}</h2>
+        <h3>{result.offer}</h3>
+        <img src={result.businessImage} alt="Business" id="fav-image" />
+        <h3>{result.address}</h3>
 
-      {result.voucher && (
-        <div>
-          <h4>QR Code:</h4>
-          <QRCode value={result.offer} />
-        </div>
-      )}
+        {result.voucher && (
+          <div>
+            <h4>QR Code:</h4>
+            <QRCode value={result.offer} />
+          </div>
+        )}
 
-      {result.address && <button onClick={handleMap}>View Map</button>}
+        {result.address && <button onClick={handleMap}>View Map</button>}
 
-      {/* Button to add to favorites */}
-      <button onClick={handleFavourite} disabled={isAddedToFavorites}>
-        {isAddedToFavorites ? "Added to Favorites" : "Add to Favorites"}
-      </button>
+        {/* Button to add to favorites */}
+        <button onClick={handleFavourite} disabled={isAddedToFavorites}>
+          {isAddedToFavorites ? "Added to Favorites" : "Add to Favorites"}
+        </button>
 
-      {showMap && (
-        <img
-          src={`https://maps.locationiq.com/v3/staticmap?key=${API_KEY}&center=${location.latitude},${location.longitude}&zoom=20&markers=${location.latitude},${location.longitude}|icon:large-blue-cutout&format=png&markers=icon:large-blue-cutout`}
-          alt="Location Map"
-        />
-      )}
+        {showMap && (
+          <img
+            src={`https://maps.locationiq.com/v3/staticmap?key=${API_KEY}&center=${location.latitude},${location.longitude}&zoom=20&markers=${location.latitude},${location.longitude}|icon:large-blue-cutout&format=png&markers=icon:large-blue-cutout`}
+            alt="Location Map"
+          />
+        )}
+      </div>
     </div>
   );
 }
