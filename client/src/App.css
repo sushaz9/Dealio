@@ -242,3 +242,35 @@ footer {
   flex-direction: column;
   margin: 10px;
 }
+
+.about-box {
+  margin: 5px;
+  margin-bottom: 15px;
+  text-align: left;
+  background-color: #f5f1ec;
+  border-radius: 10px;
+}
+
+#andy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#susie {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#luke {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#cordelia {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
