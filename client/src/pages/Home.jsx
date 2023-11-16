@@ -48,8 +48,18 @@ function Home({ favourites, setFavourites }) {
 
   const handleFavourite = (result) => {
     console.log("Adding to favourites:", result);
-    setFavourites([...favourites, result]);
-    localStorage.setItem("favorites", JSON.stringify([...favourites, result]));
+
+    // Check if the result is already in favorites
+    const isAlreadyAdded = favourites.some((fav) => fav._id === result._id);
+
+    if (!isAlreadyAdded) {
+      // If not, add to favorites
+      setFavourites([...favourites, result]);
+      localStorage.setItem(
+        "favorites",
+        JSON.stringify([...favourites, result])
+      );
+    }
   };
 
   const filteredResults = results.filter(function (result) {
@@ -124,6 +134,9 @@ function Home({ favourites, setFavourites }) {
         <div id="results">
           {filteredResults.length > 0 && <h2 id="resultsTitle">Results</h2>}
           {filteredResults.map((result) => {
+            const isAlreadyAdded = favourites.some(
+              (fav) => fav._id === result._id
+            );
             return (
               <div className="resultDiv" key={result._id}>
                 <Link to={`/results/${result._id}`}>
@@ -142,12 +155,14 @@ function Home({ favourites, setFavourites }) {
                   src={result.businessImage}
                   alt={result.businessName}
                 />
-                <button
-                  id="fave-button"
+                <button id="fave-button"
                   onClick={() => handleFavourite(result)}
+                  disabled={isAlreadyAdded}
                 >
-                  Favourite
+                  {isAlreadyAdded ? "Added to Favorites" : "Add to Favorites"}
                 </button>
+                
+              
               </div>
             );
           })}
