@@ -1,6 +1,88 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&family=Roboto&display=swap");
+
+/* font-family: 'Inter', sans-serif;
+font-family: 'Roboto', sans-serif; */
+
+* {
+  font-family: "Roboto", sans-serif;
+}
+
+/* header */
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 10vh;
+  background-color: white;
+}
+
+header img {
+  max-width: 60vw;
+}
+
+/* main {
+  display: flex;
+} */
+
+#mainImg1 {
+  width: 100vw;
+}
+
+/* filter */
+
+#filter {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+#filter select {
+  background-color: rgb(176, 173, 173);
+  border: none;
+  border-radius: 80px;
+  color: white;
+  width: 40vw;
+  padding: 5px;
+  text-align: center;
+  margin: 0px 10px;
+}
+
+#filter form {
+  margin: 20px;
+}
+
+#filter button {
+  padding: 10px;
+  background-color: rgb(176, 173, 173);
+  border: none;
+  border-radius: 80px;
+  color: white;
+  align-self: center;
+}
+
+#filter label {
+  width: 40vw;
+}
+
+/* results  */
+
+#resultsTitle {
+  display: flex;
+  align-self: center;
+}
+
 img {
   width: 300px;
 }
+
+/* featured deals */
+
+/* #featured-deals {
+  display: flex;
+} */
 
 /* BurgerMenu.css */
 .burger-menu {
@@ -67,4 +149,19 @@ img {
   padding: 10px;
   border-bottom: 1px solid #eee;
   text-align: center;
+}
+
+footer {
+  height: 40vh;
+  background-color: grey;
+  padding: 20px;
+}
+
+#linksFooter {
+  display: flex;
+  flex-direction: column;
+}
+
+Link {
+  margin: 10px;
 }

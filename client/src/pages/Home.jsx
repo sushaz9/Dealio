@@ -76,63 +76,68 @@ function Home({ favourites, setFavourites }) {
   };
 
   return (
-    <div>
-      {/* <img src="" /> */}
-      <p>Dealio</p>
-      <form onChange={handleLocationFilter}>
-        <label>Filter by location:</label>
-        <select name="location">
-          <option value=""> All </option>
-          <option value="UK wide"> UK Wide </option>
-          <option value="Manchester"> Manchester </option>
-          <option value="Liverpool"> Liverpool </option>
-        </select>
-      </form>
+    <main>
+      <div id="opening-div">
+        <img id="mainImg1" src="../src/assets/unsplash/restaurant-large.jpg" />
+        {/* <p></p> */}
+      </div>
+      <section id="filter">
+        <form onChange={handleLocationFilter}>
+          <label>Filter by location:</label>
+          <select name="location">
+            <option value=""> All </option>
+            <option value="UK wide"> UK Wide </option>
+            <option value="Manchester"> Manchester </option>
+            <option value="Liverpool"> Liverpool </option>
+          </select>
+        </form>
 
-      <form onChange={handleCategoryFilter}>
-        <label>Filter by category:</label>
-        <select name="category">
-          <option value=""> All </option>
-          <option value="Fast food"> Fast Food </option>
-          <option value="Japanese"> Japanese </option>
-          <option value="Street food"> Street Food </option>
-          <option value="Fine dining"> Fine Dining </option>
-          <option value="Bar"> Bar </option>
-          <option value="Pub"> Pub </option>
-        </select>
-      </form>
+        <form onChange={handleCategoryFilter}>
+          <label>Filter by category:</label>
+          <select name="category">
+            <option value=""> All </option>
+            <option value="Fast food"> Fast Food </option>
+            <option value="Japanese"> Japanese </option>
+            <option value="Street food"> Street Food </option>
+            <option value="Fine dining"> Fine Dining </option>
+            <option value="Bar"> Bar </option>
+            <option value="Pub"> Pub </option>
+          </select>
+        </form>
 
-      <form onChange={handleDayFilter}>
-        <label>Filter by day of discount:</label>
-        <select name="discountday">
-          <option value=""> All </option>
-          <option value="Weekday"> All Weekdays </option>
-          <option value="Weekend"> All Weekend Days </option>
-          <option value="Monday"> Monday </option>
-          <option value="Tuesday"> Tuesday </option>
-          <option value="Wednesday"> Wednesday </option>
-          <option value="Thursday"> Thursday </option>
-          <option value="Friday"> Friday </option>
-          <option value="Saturday"> Saturday </option>
-          <option value="Sunday"> Sunday </option>
-        </select>
-      </form>
+        <form onChange={handleDayFilter}>
+          <label>Filter by day of discount:</label>
+          <select name="discountday">
+            <option value=""> All </option>
+            <option value="Weekday"> All Weekdays </option>
+            <option value="Weekend"> All Weekend Days </option>
+            <option value="Monday"> Monday </option>
+            <option value="Tuesday"> Tuesday </option>
+            <option value="Wednesday"> Wednesday </option>
+            <option value="Thursday"> Thursday </option>
+            <option value="Friday"> Friday </option>
+            <option value="Saturday"> Saturday </option>
+            <option value="Sunday"> Sunday </option>
+          </select>
+        </form>
 
-      {/* Button to show filtered results */}
-      <button onClick={handleShowFilteredResults}>Show Filtered Results</button>
-
+        {/* Button to show filtered results */}
+        <button onClick={handleShowFilteredResults}>
+          Show Filtered Results
+        </button>
+      </section>
       {/* Display filtered results only if the button is clicked */}
       {showFilteredResults && (
         <div id="results">
           {/* Add H2 tag when there are filtered results */}
-          {filteredResults.length > 0 && <h2>Results</h2>}
+          {filteredResults.length > 0 && <h2 id="resultsTitle">Results</h2>}
           {filteredResults.map((result) => {
             return (
-              <div key={result._id}>
+              <div className="resultDiv" key={result._id}>
                 <Link to={`/results/${result._id}`}>
                   <h2>{result.businessName}</h2>
+                  <img src={result.logoImage} alt={result.businessName} />
                 </Link>
-                <img src={result.logoImage} alt={result.businessName} />
                 <h3>{result.location}</h3>
                 <h3>{result.discountDay}</h3>
                 <h3>{result.category}</h3>
@@ -166,7 +171,7 @@ function Home({ favourites, setFavourites }) {
       >
         Go to Favourites
       </button>
-    </div>
+    </main>
   );
 }
 
