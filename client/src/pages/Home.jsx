@@ -83,7 +83,7 @@ function Home({ favourites, setFavourites }) {
   return (
     <main>
       <div id="opening-div">
-        <img id="mainImg1" src="../src/assets/unsplash/restaurant-large.jpg" />
+        <img id="mainImg1" src="../src/assets/unsplash/restaurant4.png" />
         {/* <p></p> */}
       </div>
       <section id="filter">
@@ -155,14 +155,13 @@ function Home({ favourites, setFavourites }) {
                   src={result.businessImage}
                   alt={result.businessName}
                 />
-                <button id="fave-button"
+                <button
+                  id="fave-button"
                   onClick={() => handleFavourite(result)}
                   disabled={isAlreadyAdded}
                 >
                   {isAlreadyAdded ? "Added to Favorites" : "Add to Favorites"}
                 </button>
-                
-              
               </div>
             );
           })}
@@ -183,14 +182,7 @@ function Home({ favourites, setFavourites }) {
           })}
         </Slider>
       </div>
-      <div id="before-footer">
-        <button
-          className="go-to-faves-btn"
-          onClick={() => navigate("/favourites", { state: { favourites } })}
-        >
-          Go to Favourites
-        </button>
-      </div>
+      <div id="before-footer"></div>
     </main>
   );
 }
