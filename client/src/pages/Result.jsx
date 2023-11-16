@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import QRCode from "react-qr-code"; // Import the QRCode component
+import QRCode from "react-qr-code";
 
 const API_KEY = import.meta.env.VITE_LOCATION_KEY;
 
