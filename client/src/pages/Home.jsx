@@ -12,6 +12,7 @@ function Home({ favourites, setFavourites }) {
   const [location, setLocation] = useState("");
   const [discountDay, setDay] = useState("");
   const [category, setCategory] = useState("");
+  const [showFilteredResults, setShowFilteredResults] = useState(false); // New state
 
   // Uses useNavigate for navigation (rather than Link in the button)
   const navigate = useNavigate();
@@ -33,16 +34,19 @@ function Home({ favourites, setFavourites }) {
   function handleLocationFilter(event) {
     event.preventDefault();
     setLocation(event.target.value);
+    handleFilterChange();
   }
 
   function handleCategoryFilter(event) {
     event.preventDefault();
     setCategory(event.target.value);
+    handleFilterChange();
   }
 
   function handleDayFilter(event) {
     event.preventDefault();
     setDay(event.target.value);
+    handleFilterChange();
   }
 
   // function 'handleFavourite' takes result parameter and logs message to console. The updates favourites state by creating new array, which includes existing favourites and adds new result.
@@ -62,13 +66,22 @@ function Home({ favourites, setFavourites }) {
 
   console.log("Favourites state before link:", favourites);
 
+  const handleShowFilteredResults = () => {
+    setShowFilteredResults(true);
+  };
+
+  const handleFilterChange = () => {
+    // Reset the showFilteredResults state when filters change
+    setShowFilteredResults(false);
+  };
+
   return (
     <div>
       {/* <img src="" /> */}
       <p>Dealio</p>
       <form onChange={handleLocationFilter}>
         <label>Filter by location:</label>
-        <select>
+        <select name="location">
           <option value=""> All </option>
           <option value="UK wide"> UK Wide </option>
           <option value="Manchester"> Manchester </option>
@@ -78,18 +91,20 @@ function Home({ favourites, setFavourites }) {
 
       <form onChange={handleCategoryFilter}>
         <label>Filter by category:</label>
-        <select>
+        <select name="category">
           <option value=""> All </option>
           <option value="Fast food"> Fast Food </option>
           <option value="Japanese"> Japanese </option>
           <option value="Street food"> Street Food </option>
           <option value="Fine dining"> Fine Dining </option>
+          <option value="Bar"> Bar </option>
+          <option value="Pub"> Pub </option>
         </select>
       </form>
 
       <form onChange={handleDayFilter}>
         <label>Filter by day of discount:</label>
-        <select>
+        <select name="discountday">
           <option value=""> All </option>
           <option value="Weekday"> All Weekdays </option>
           <option value="Weekend"> All Weekend Days </option>
@@ -103,29 +118,39 @@ function Home({ favourites, setFavourites }) {
         </select>
       </form>
 
-      <div id="results">
-        {filteredResults.map((result) => {
-          return (
-            <div key={result._id}>
-              <Link to={`/results/${result._id}`}>
-                <h2>{result.businessName}</h2>
-              </Link>
-              <img src={result.logoImage} alt={result.businessName} />
-              <h3>{result.location}</h3>
-              <h3>{result.discountDay}</h3>
-              <h3>{result.category}</h3>
-              <h3>{result.offer}</h3>
-              <img src={result.businessImage} alt={result.businessName} />
-              {/* Add favourite button. Triggers function. Arrow fuction passes result parameter to the function. */}
-              <button onClick={() => handleFavourite(result)}>Favourite</button>
-            </div>
-          );
-        })}
-      </div>
+      {/* Button to show filtered results */}
+      <button onClick={handleShowFilteredResults}>Show Filtered Results</button>
+
+      {/* Display filtered results only if the button is clicked */}
+      {showFilteredResults && (
+        <div id="results">
+          {/* Add H2 tag when there are filtered results */}
+          {filteredResults.length > 0 && <h2>Results</h2>}
+          {filteredResults.map((result) => {
+            return (
+              <div key={result._id}>
+                <Link to={`/results/${result._id}`}>
+                  <h2>{result.businessName}</h2>
+                </Link>
+                <img src={result.logoImage} alt={result.businessName} />
+                <h3>{result.location}</h3>
+                <h3>{result.discountDay}</h3>
+                <h3>{result.category}</h3>
+                <h3>{result.offer}</h3>
+                <img src={result.businessImage} alt={result.businessName} />
+                {/* Add favourite button. Triggers function. Arrow fuction passes result parameter to the function. */}
+                <button onClick={() => handleFavourite(result)}>
+                  Favourite
+                </button>
+              </div>
+            );
+          })}
+        </div>
+      )}
       <div id="featured-deals">
         <h2>FEATURED DEALS</h2>
         <Slider autoplay={true} autoplaySpeed={4000}>
-          {filteredResults.map((result) => {
+          {results.map((result) => {
             return (
               <div key={result._id}>
                 <h2>{result.businessName}</h2>
